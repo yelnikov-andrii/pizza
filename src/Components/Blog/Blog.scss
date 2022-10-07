@@ -1,0 +1,46 @@
+.blog {
+  padding: 50px 0;
+
+  &__title {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    color: $txt_color;
+  }
+
+  &__block {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    &_item {
+      width: 30%;
+
+      &_img {
+        width: 330px;
+        height: 220px;
+        margin: 0 0 10px 0;
+      }
+
+      &_date {
+        color: $txt_color3;
+        font-size: 14px;
+        margin: 0 0 8px 0;
+      }
+
+      &_name {
+        color: $txt_color2;
+        font-size: 31px;
+        font-weight: 700;
+      }
+
+      &_preview {
+        color: $txt_color3;
+      }
+
+      &_link {
+        color: $txt_color2;
+      }
+    }
+  }
+}

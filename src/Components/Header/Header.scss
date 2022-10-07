@@ -1,0 +1,114 @@
+.header {
+  padding: 20px 0 40px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: $txt_color;
+    text-decoration: none;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    width: 700px;
+
+    &_link {
+      font-size: 14px;
+      line-height: 1.5;
+      font-weight: 700;
+      text-decoration: none;
+      color: $txt_color;
+    }
+
+    &--cart {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      width: 90px;
+    }
+  }
+
+  &__phonesBlock {
+    display: flex;
+    justify-content: space-between;
+    height: 34px;
+  }
+
+  &__phones {
+    position: relative;
+
+    &_title {
+      height: 34px;
+      width: 100px;
+      border: none;
+      outline: none;
+      background-color: $button_color;
+      border-radius: 4px;
+      display: block;
+      position: relative;
+
+      &:before {
+        content: '\25BC';
+        top: 50%;
+        transform: translateY(-50%);
+        right: 3px;
+        position: absolute;
+      }
+    }
+
+    &_list {
+      list-style: none;
+      padding: 0;
+      min-height: 0;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      margin: 0;
+      visibility: hidden;
+      border-radius: 2px;
+      box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 4px;
+      padding: 5px 0;
+
+      &--open {
+        visibility: visible;
+      }
+
+      &_item {
+        padding: 3px 20px;
+        background-color: $bg_color;
+
+        &:hover {
+          background-color: $bg_color2;
+        }
+      }
+
+      &_link {
+        color: $txt_color2;
+        text-decoration: none;
+      }
+    }
+
+    &_callback {
+      margin-left: 10px;
+      width: 70px;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.pizzas {
+  padding: 50px 0;
+  background: $bg_color;
+
+  &__title {
+    color: $txt_color;
+    margin: 0 0 90px 0;
+    text-align: center;
+    font-size: 48px;
+  }
+
+  &__types {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 40px 0;
+
+    &_list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+
+      &_item {
+        height: 34px;
+        border: 1px solid $border_color;
+        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+
+        &--active {
+          background-color: $bg_color4;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: $bg_color2;
+        }
+      }
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+
+    &_item {
+      width: 30%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      height: 550px;
+    }
+  }
+}

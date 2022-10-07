@@ -1,0 +1,33 @@
+.vacancies {
+  padding: 50px 0;
+
+  &__title {
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+    color: $txt_color;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex-wrap: wrap;
+
+    &_item {
+      width: 100%;
+
+      &_img {
+        width: 100%;
+        height: auto;
+        margin: 0 0 10px 0;
+      }
+
+      &_name {
+        color: $txt_color2;
+        font-size: 31px;
+        font-weight: 700;
+      }
+    }
+  }
+}

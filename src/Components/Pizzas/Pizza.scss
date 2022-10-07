@@ -1,0 +1,173 @@
+.pizza {
+  position: relative;
+  margin: 0 0 20px 0;
+  border: 1px solid $bg_color2;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid $bg_color4;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 4px;
+    margin: 0 0 10px 0;
+  }
+
+  &__name {
+    font-size: 20px;
+    color: $txt_color;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    align-self: flex-start;
+  }
+
+  &__buttonComponents {
+    border-radius: 4px;
+    border: 1px solid $txt_color;
+    background: transparent;
+    width: 56px;
+    height: 31px;
+    align-self: flex-start;
+    opacity: 0.7;
+    margin: 0 0 10px 0;
+  }
+
+  &__components {
+    position: absolute;
+    top: 301px;
+    left: 0;
+    background-color: $bg_color3;
+    padding: 10px;
+    border-radius: 4px;
+    color: $bg_color;
+    visibility: hidden;
+    height: 135px;
+    z-index: 2;
+
+    &--visible {
+      visibility: visible;
+    }
+
+    &_description {
+      color: $bg_color2;
+      opacity: 0.6;
+    }
+  }
+
+  &__sizes {
+    align-self: flex-start;
+    display: flex;
+    gap: 10px;
+    margin: 0 0 10px 0;
+
+    &_button {
+      width: 100px;
+      height: 30px;
+      background-color: $bg_color;
+      border: 1px solid $txt_color2;
+      outline: none;
+      border-radius: 17px;
+      font-weight: 600;
+      text-align: left;
+
+      &:nth-child(1) {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          position: absolute;
+          top: 3px;
+          right: 10px;
+          content: attr(data-weight-32);
+          font-weight: 500;
+          font-size: 10px;
+        }
+      }
+
+      &:nth-child(2) {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          position: absolute;
+          top: 3px;
+          right: 10px;
+          content: attr(data-weight-42);
+          font-weight: 500;
+          font-size: 10px;
+        }
+      }
+
+      &--active {
+        background-color: $button_color;
+        border: none;
+      }
+
+      &:hover {
+        background-color: $bg_color2;
+        cursor: pointer;
+
+        &.pizza__sizes_button--active {
+          background-color: $button_hover;
+        }
+      }
+
+    }
+  }
+
+  &__souses {
+    align-self: flex-start;
+    display: flex;
+    gap: 10px;
+    margin: 0 0 10px 0;
+
+    &_button {
+      width: 125px;
+      height: 30px;
+      background-color: $bg_color;
+      border: 1px solid $txt_color2;
+      outline: none;
+      border-radius: 17px;
+      font-weight: 600;
+
+      &--active {
+        background-color: $button_color;
+        border: none;
+      }
+
+      &:hover {
+        background-color: $bg_color2;
+        cursor: pointer;
+
+        &.pizza__souses_button--active {
+          background-color: $button_hover;
+        }
+      }
+
+    }
+  }
+
+  &__price {
+    align-self: flex-start;
+    font-size: 24px;
+    font-weight: 600;
+    color: $txt_color2;
+  }
+
+  &__button {
+    width: 100%;
+    height: 38px;
+    background-color: $button_color;
+    color: $txt_color;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $button_hover;
+      cursor: pointer;
+    }
+  }
+}
