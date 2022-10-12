@@ -9,7 +9,7 @@ import { Pizza } from "../../types/type";
 import { PizzaCard } from "../PizzaCard/PizzaCard";
 import { transcriptionIntoEng } from '../../transcription/transcription';
 import { useDispatch, useSelector } from "react-redux";
-import { GET_PIZZAS, GET_SIZES32, ADD_SIZES32, REMOVE_SIZES32, REMOVE_SIZES42, ADD_SIZES42, GET_BUTTER_SOUSES, GET_TOMATO_SOUSES, ADD_TOMATO_SOUS, REMOVE_BUTTER_SOUS, ADD_BUTTER_SOUS, REMOVE_TOMATO_SOUS, GET_SIZES42, ADD_PIZZA_TO_CART, GET_AMOUNT_OF_PIZZAS } from "../../app/reducer";
+import { GET_PIZZAS, GET_SIZES32, ADD_SIZES32, REMOVE_SIZES32, REMOVE_SIZES42, ADD_SIZES42, GET_BUTTER_SOUSES, GET_TOMATO_SOUSES, ADD_TOMATO_SOUS, REMOVE_BUTTER_SOUS, ADD_BUTTER_SOUS, REMOVE_TOMATO_SOUS, GET_SIZES42, ADD_PIZZA_TO_CART, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
 import { RootState } from "../../app/store";
 
 export const Pizzas = () => {
@@ -23,6 +23,7 @@ export const Pizzas = () => {
   const [selectedType, setSelectedType] = useState('Усі');
   const arrTypes = ['Усі', 'Сирні', 'М\'ясні', 'Овочеві', 'Фірмові', 'Морські'];
   const dispatch = useDispatch();
+  const pizzasInCart = useSelector((state: RootState) => state.pizzas.pizzasInCart);
 
   useEffect(() => {
     getData()
@@ -305,7 +306,13 @@ export const Pizzas = () => {
                   <button 
                     className="pizza__button"
                     onClick={() => {
-                      addPizzaToCart({...pizza});
+                      const foundPizza = pizzasInCart.find((pizzaInCart: Pizza) => pizzaInCart.name === pizza.name && pizzaInCart.sizes[0] === pizza.sizes[0] && pizzaInCart.souses[0] === pizza.souses[0]);
+                      if (foundPizza === undefined) {
+                        addPizzaToCart({...pizza});
+                      } else {
+                        dispatch({type: INCREASE_AMOUNT_OF_PIZZA, payload: pizza});
+                        dispatch({type: GET_AMOUNT_OF_PIZZAS});
+                      }
                     }}
                   >
                     До корзини

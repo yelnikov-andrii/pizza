@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 export const Contacts = () => {
   const arrPhones = [
     '+3809312345678',
     '+3806712345678',
     '+3809912345678',
   ];
+
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
     <section className="contacts">
@@ -20,7 +24,7 @@ export const Contacts = () => {
             />
             <ul className="contacts__block_contacts_item_list">
               {arrPhones.map(phone => (
-                <li className="contacts__block_contacts_item_list_item">
+                <li className="contacts__block_contacts_item_list_item" key={phone}>
                 <a
                   className="contacts__block_contacts_item_list_link" 
                   href={`tel:${phone}`}
@@ -73,54 +77,65 @@ export const Contacts = () => {
           <p className="contacts__block_form_title">
             Зворотній зв'язок
           </p>
-          <form className="contacts__form">
-            <label 
-              htmlFor="name" 
-              className="contacts__form_label"
-            >
-              Ім'я
-            </label>
-            <input 
-              id="name" 
-              placeholder="Ім'я" 
-              className="contacts__form_input"
-            />
-            <label 
-              htmlFor="phone" 
-              className="contacts__form_label"
-            >
-              Телефон
-            </label>
-            <input 
-              id="phone" 
-              placeholder="Телефон"
-              className="contacts__form_input"
-            />
-            <label 
-              htmlFor="email" 
-              className="contacts__form_label"
-            >
-              Email
-            </label>
-            <input 
-              id="email" 
-              placeholder="Email"
-              className="contacts__form_input"
-            />
-            <label 
-              htmlFor="message" 
-              className="contacts__form_label"
-            >
-              Повідомлення
-            </label>
-            <textarea 
-              id="message" 
-              className="contacts__form_textarea"
-            />
-            <button className="contacts__form_button">
-              Відправити
-            </button>
-          </form>
+          {formSubmitted === false ? (
+            <form className="contacts__form" onSubmit={() => {
+              console.log('sent');
+              setFormSubmitted(true);
+            }}>
+              <label 
+                htmlFor="name" 
+                className="contacts__form_label"
+              >
+                Ім'я
+              </label>
+              <input 
+                id="name" 
+                placeholder="Ім'я" 
+                className="contacts__form_input"
+                required
+              />
+              <label 
+                htmlFor="phone" 
+                className="contacts__form_label"
+              >
+                Телефон
+              </label>
+              <input 
+                id="phone" 
+                placeholder="Телефон"
+                className="contacts__form_input"
+                required
+              />
+              <label 
+                htmlFor="email" 
+                className="contacts__form_label"
+              >
+                Email
+              </label>
+              <input 
+                id="email" 
+                placeholder="Email"
+                className="contacts__form_input"
+              />
+              <label 
+                htmlFor="message" 
+                className="contacts__form_label"
+              >
+                Повідомлення
+              </label>
+              <textarea 
+                id="message" 
+                className="contacts__form_textarea"
+              />
+              <button className="contacts__form_button">
+                Відправити
+              </button>
+            </form>
+          ) : (
+            <div className="contacts__block_form_submitted">
+              Дякуємо за звернення! Найближчим часом ми зв'яжемося з Вами
+            </div>
+          )}
           </div>
           <div className="contacts__block_map">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2568.256810085524!2d36.425417584130834!3d49.93152236723981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41270c41890debbf%3A0x50ef36d620f64500!2z0JzQvtGB0LrQvtCy0YHRjNC60LjQuSDQv9GA0L7RgdC_0LXQutGCLCAyOTYsINCl0LDRgNC60ZbQsiwg0KXQsNGA0LrRltCy0YHRjNC60LAg0L7QsdC70LDRgdGC0YwsIDYxMDAw!5e0!3m2!1suk!2sua!4v1665185135479!5m2!1suk!2sua" width="auto" height="350" loading="lazy" title="title" className="contacts__block_map_frame"></iframe>

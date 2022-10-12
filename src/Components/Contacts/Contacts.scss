@@ -73,6 +73,12 @@
       margin: 0 auto;
       width: 80%;
 
+      &_submitted {
+        padding: 10px;
+        background-color: $bg_color5;
+        color: $txt_color;
+      }
+
       @include onTablet {
         width: 100%;
         flex-direction: column;

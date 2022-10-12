@@ -23,6 +23,7 @@ export const Header = () => {
   const amountOfPizzas = useSelector((state: RootState) => state.pizzas.amountOfPizzasInCart);
   const [phone, setPhone] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [formIsSubmitted, setFormIsSubmitted] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -175,7 +176,7 @@ export const Header = () => {
         </div>
         <ul className="header__list--cart">
           <li className="header__list_item">
-            <Link to='user' className="header__list_link">
+            <Link to='/' className="header__list_link">
               <img
                 src="https://cdn.onlinewebfonts.com/svg/img_210318.png"
                 alt=""
@@ -202,6 +203,7 @@ export const Header = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
+        ariaHideApp={false}
         contentLabel="Example Modal"
         className="header__modal"
       >
@@ -215,37 +217,45 @@ export const Header = () => {
           }}>
           &#128473;
         </span>
-        <form className="header__modal_form">
-          <label className="header__modal_form_label">
-            Ім'я
-          </label>
-          <input 
-            type="text"
-            id="name"
-            className="header__modal_form_input"
-          />
-          <label className="header__modal_form_label">
-            Телефон
-          </label>
-          <input 
-            type="text" 
-            placeholder="+38 (___) ___-__-__" 
-            id="phone"
-            className="header__modal_form_input"
-            value={phone}
-            onClick={() => {
-              setPhone('+38');
-            }}
-            onChange={(event) => {
-              if (Number.isInteger(+event.target.value) && event.target.value.length <= 12) {
-                setPhone(event.target.value);
-              }
-            }}
-          />
-          <button className="header__modal_form_button">
-            Відправити
-          </button>
-        </form>
+        {formIsSubmitted === false ? (
+          <form className="header__modal_form" onSubmit={() => {
+            setFormIsSubmitted(true);
+          }}>
+            <label className="header__modal_form_label">
+              Ім'я
+            </label>
+            <input 
+              type="text"
+              id="name"
+              className="header__modal_form_input"
+            />
+            <label className="header__modal_form_label">
+              Телефон
+            </label>
+            <input 
+              type="text" 
+              placeholder="+38 (___) ___-__-__" 
+              id="phone"
+              className="header__modal_form_input"
+              value={phone}
+              onClick={() => {
+                setPhone('+38');
+              }}
+              onChange={(event) => {
+                if (Number.isInteger(+event.target.value) && event.target.value.length <= 12) {
+                  setPhone(event.target.value);
+                }
+              }}
+            />
+            <button className="header__modal_form_button">
+              Відправити
+            </button>
+          </form>
+        ) : (
+          <div className="contacts__block_form_submitted">
+            Дякуємо за звернення! Найближчим часом ми зв'яжемося з Вами
+          </div>
+        )}
       </Modal>
     </header>
   )

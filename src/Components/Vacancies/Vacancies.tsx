@@ -15,7 +15,7 @@ export const Vacancies = () => {
         </h1>
         <div className="vacancies__block">
           {arrVacancies.map(vacancy => (
-            <div className="places__block_item">
+            <div className="places__block_item" key={vacancy.name}>
               <img src={vacancy.img} alt="" className="places__block_item_img"/>
               <p className="places__block_item_name">
                 {vacancy.name}
