@@ -1,0 +1,122 @@
+.cart {
+  padding: 50px 0;
+
+  &__title {
+    color: $txt_color2;
+    margin: 0 0 90px 0;
+    text-align: center;
+    font-size: 48px;
+  }
+
+  &__block {
+    width: 100%;
+
+    &_imgBlock {
+      display: flex;
+      justify-content: center;
+    }
+
+    &_title {
+      text-align: center;
+      font-size: 36px;
+      color: $txt_color2;
+      font-weight: 700;
+    }
+
+    &_link {
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 245px;
+      height: 50px;
+      text-decoration: none;
+      background-color: $bg_color3;
+      color: $bg_color;
+      font-weight: 600;
+      border-radius: 4px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    &_head {
+      text-align: left;
+      
+      &_row {
+        border-bottom: 2px solid $border_color;
+      }
+
+      &_header {
+        font-size: 14px;
+        color: $txt_color3;
+      }
+    }
+
+    &_body {
+
+      &_row {
+        border-top: 1px solid $txt_hover;
+      }
+
+      &_desc {
+        vertical-align: top;
+        padding: 5px 0;
+        color: $txt_color3;
+
+        &_img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+
+  &__price {
+    color: $txt_color3;
+    font-size: 24px;
+    text-align: right;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+
+    &_label {
+      margin-bottom: 5px;
+    }
+
+    &_input {
+      height: 50px;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+    }
+
+    &_select {
+      height: 50px;
+      margin-bottom: 20px;
+      padding: 10px 20px 10px 10px;
+      box-sizing: border-box;
+    }
+
+    &_textarea {
+      height: 80px;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+    }
+
+    &_button {
+      width: 145px;
+      height: 40px;
+      background-color: $button_color;
+      border: none;
+      outline: none;
+      margin-left: auto;
+      color: $txt_color;
+    }
+  }
+}

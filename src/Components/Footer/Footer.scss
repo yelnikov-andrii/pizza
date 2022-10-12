@@ -10,6 +10,11 @@
     display: flex;
     justify-content: space-between;
 
+    @include onTablet {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     &_item {
       &_title {
         font-size: 22px;
@@ -31,6 +36,51 @@
     &_link {
       color: $bg_color4;
       text-decoration: none;
+
+      &--fb {
+        &:hover {
+          svg {
+            path {
+              fill: #3b5998;
+            }
+          }
+        }
+      }
+
+      &--ins {
+        &:hover {
+          svg {
+            path {
+              fill: url(#rg);
+            }
+          }
+        }
+      }
+
+      &--tw {
+        &:hover {
+          svg {
+            path {
+              fill: #00aace;
+            }
+          }
+        }
+      }
+
+      &--ln {
+        &:hover {
+          svg {
+            path {
+              fill: #0e76a8;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        text-decoration: underline;
+        color: $bg_color;
+      }
     }
   }
 }

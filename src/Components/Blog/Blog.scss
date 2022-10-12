@@ -16,9 +16,13 @@
     &_item {
       width: 30%;
 
+      @include onTablet {
+        width: 100%;
+      }
+
       &_img {
-        width: 330px;
-        height: 220px;
+        width: 100%;
+        height: auto;
         margin: 0 0 10px 0;
       }
 

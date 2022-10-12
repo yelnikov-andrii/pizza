@@ -1,0 +1,65 @@
+.pizzaCard {
+  padding: 100px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__blockImg {
+    width: 55%;
+
+    &_img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+  }
+
+  &__blockTxt {
+    width: 40%;
+
+    &_name {
+      font-size: 32px;
+      color: $txt_color2;
+      margin: 0 0 40px 0;
+      font-weight: 900;
+    }
+  }
+
+  &__blockButton {
+    display: flex;
+    gap: 5px;
+
+    &_amountBlock {
+      display: flex;
+
+      &_btn {
+        width: 40px;
+        border: none;
+        outline: none;
+        background-color: $bg_input;
+        font-weight: 600;
+        font-size: 20px;
+        color: $txt_color2;
+        cursor: pointer;
+      }
+
+      &_input {
+        width: 20px;
+        border: none;
+        outline: none;
+        background-color: $bg_input;
+        font-weight: 600;
+        font-size: 20px;
+        color: $txt_color2;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__button {
+    width: 155px;
+    height: 55px;
+  }
+}

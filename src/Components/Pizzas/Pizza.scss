@@ -21,6 +21,12 @@
     margin: 0 0 10px 0;
     font-weight: 700;
     align-self: flex-start;
+    text-decoration: none;
+
+    &:hover {
+      color: $txt_hover;
+      cursor: pointer;
+    }
   }
 
   &__buttonComponents {
@@ -74,7 +80,7 @@
 
       &:nth-child(1) {
         position: relative;
-        z-index: 1;
+        z-index: 0;
 
         &::before {
           position: absolute;
@@ -88,7 +94,7 @@
 
       &:nth-child(2) {
         position: relative;
-        z-index: 1;
+        z-index: 0;
 
         &::before {
           position: absolute;

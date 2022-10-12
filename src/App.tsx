@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import { Header } from './Components/Header/Header';
 import './App.scss';
 import { Pizzas } from './Components/Pizzas/Pizzas';
@@ -13,60 +11,16 @@ import { Discounts } from './Components/Discounts/Discounts';
 import { Places } from './Components/Places/Places';
 import { Vacancies } from './Components/Vacancies/Vacancies';
 import { Contacts } from './Components/Contacts/Contacts';
+import { Cart } from './Components/Cart/Cart';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path='' element={
+        <Route path='/*' element={
           <>
           <Pizzas />
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <Counter />
-            <p>
-              Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <span>
-              <span>Learn </span>
-              <a
-                className="App-link"
-                href="https://reactjs.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                React
-              </a>
-              <span>, </span>
-              <a
-                className="App-link"
-                href="https://redux.js.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Redux
-              </a>
-              <span>, </span>
-              <a
-                className="App-link"
-                href="https://redux-toolkit.js.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Redux Toolkit
-              </a>
-              ,<span> and </span>
-              <a
-                className="App-link"
-                href="https://react-redux.js.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                React Redux
-              </a>
-            </span>
-          </header>
           </>
           }>
         </Route>
@@ -76,7 +30,7 @@ function App() {
           </>
         }>
         </Route>
-        <Route path='blog' element={
+        <Route path='blog/*' element={
           <>
           <Blog />
           </>
@@ -109,6 +63,12 @@ function App() {
         <Route path='kontakty' element={
           <>
           <Contacts />
+          </>
+        }>
+        </Route>
+        <Route path='cart' element={
+          <>
+          <Cart />
           </>
         }>
         </Route>

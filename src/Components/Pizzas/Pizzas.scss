@@ -7,6 +7,11 @@
     margin: 0 0 90px 0;
     text-align: center;
     font-size: 48px;
+
+    &--loading {
+      display: inline;
+      margin: 0 0 30px 0;
+    }
   }
 
   &__types {
@@ -21,6 +26,10 @@
       display: flex;
       justify-content: space-between;
       width: 60%;
+
+      @include onTablet {
+        flex-direction: column;
+      }
 
       &_item {
         height: 34px;
@@ -49,6 +58,10 @@
     gap: 40px;
     width: 100%;
 
+    @include onDesktop {
+      justify-content: space-around;
+    }
+
     &_item {
       width: 30%;
       padding: 20px;
@@ -57,6 +70,15 @@
       align-items: center;
       box-sizing: border-box;
       height: 550px;
+      min-width: 300px;
     }
+  }
+
+  &__oval {
+    display: inline-block;
+  }
+
+  &__loading {
+    display: flex;
   }
 }

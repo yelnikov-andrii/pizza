@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { transcriptionIntoEng } from "../../transcription/transcription";
 
@@ -22,11 +23,9 @@ export const Footer = () => {
     '+3809312345678',
     '+3806712345678',
     '+3809912345678',
-    'Замовити дзвінок',
     'pizzashop@gmail.com',
-    'м.Харків, вул. Героїв Харкова 296',
-    'м.Харків, вул. Велика Кільцева 136-А'
   ];
+  
 
   const iconsArr = [
     {
@@ -128,11 +127,23 @@ export const Footer = () => {
           <ul className="footer__list">
           {contacts.map(contact => (
             <li className="footer__list_item" key={contact}>
-              <a href="/" className="footer__list_link">
+              <a href={contact[0] === '+' ? `tel: ${contact}` : contact[0] === 'p' ? `mailto: ${contact}` : contact} className="footer__list_link">
                 {contact}
               </a>
             </li>
           ))}
+            <li className="footer__list_item">
+              <a className="footer__list_link" href="https://goo.gl/maps/WZ9wufaczsi7AFSi7" target="_blank"
+              rel="noreferrer">
+                м.Харків, вул. Героїв Харкова 296
+              </a>
+            </li>
+            <li className="footer__list_item">
+              <a className="footer__list_link" href="https://goo.gl/maps/6j4hGFrotNwsfjLN6" target="_blank"
+              rel="noreferrer">
+                м.Харків, вул. Велика Кільцева 136-А
+              </a>
+            </li>
           </ul>
           </div>
           <div className="footer__block_item">
@@ -142,7 +153,17 @@ export const Footer = () => {
           <ul className="footer__list">
           {iconsArr.map(icon => (
             <li className="footer__list_item" key={icon.id}>
-              <a href="/" className="footer__list_link">
+              <a 
+                href={icon.url} 
+                className={classNames("footer__list_link", {
+                  "footer__list_link--fb": icon.id === 1,
+                  "footer__list_link--ins": icon.id === 2,
+                  "footer__list_link--tw": icon.id === 3,
+                  "footer__list_link--ln": icon.id === 4
+                })}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {icon.item}
               </a>
             </li>
