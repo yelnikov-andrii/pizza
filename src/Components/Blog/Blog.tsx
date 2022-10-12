@@ -54,7 +54,10 @@ export const Blog = () => {
       }>
       </Route>
       {blogArr.map(blog => (
-        <Route path={blog.link} element={
+        <Route 
+          path={blog.link}
+          key={blog.name}
+          element={
           <BlogItem blog={blog} />
         }>
         </Route>

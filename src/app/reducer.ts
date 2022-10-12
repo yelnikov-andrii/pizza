@@ -78,16 +78,16 @@ export const pizzasReducer = (state = defaultState, action: any) => {
       }
       return {...state, amountOfPizzasInCart: amount}
     case INCREASE_AMOUNT_OF_PIZZA:
-      const filtered = [...state.pizzasInCart];
-      const foundPizza = filtered.find(pizza => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
+      const filtered = JSON.parse( JSON.stringify([...state.pizzasInCart]));
+      const foundPizza = filtered.find((pizza: Pizza) => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
 
       if (foundPizza !== undefined) {
         foundPizza.qty++;
       }
       return {...state, pizzasInCart: filtered}
       case DECREASE_AMOUNT_OF_PIZZA:
-        const filteredPizzas = [...state.pizzasInCart];
-      const thePizza = filteredPizzas.find(pizza => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
+      const filteredPizzas = JSON.parse( JSON.stringify([...state.pizzasInCart]));
+      const thePizza = filteredPizzas.find((pizza: Pizza) => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
 
       if (thePizza !== undefined) {
         thePizza.qty--;

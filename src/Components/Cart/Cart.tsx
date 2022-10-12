@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { DECREASE_AMOUNT_OF_PIZZA, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
 import { RootState } from "../../app/store";
+import { Pizza } from "../../types/type";
 
 export const Cart: React.FC = () => {
   const pizzas = useSelector((state: RootState) => state.pizzas.pizzasInCart);
@@ -21,7 +22,7 @@ export const Cart: React.FC = () => {
       return amount;
     });
 
-    sumOfOrders = arrOfSums.reduce((a, b) => a + b);
+    sumOfOrders = arrOfSums.reduce((a: number, b: number) => a + b);
   }
 
   return (
@@ -54,7 +55,7 @@ export const Cart: React.FC = () => {
           </tr>
           </thead>
           <tbody className="cart__table_body">
-            {pizzas.map((pizza) => (
+            {pizzas.map((pizza: Pizza) => (
               <tr 
                 className="cart__table_body_row" 
                 key={pizza.name + pizza.souses[0] + pizza.sizes[0]}
@@ -103,7 +104,7 @@ export const Cart: React.FC = () => {
       </div>
               </td>
               <td className="cart__table_body_desc">
-              {activeSize32.includes(pizza.name) ? (pizza.prices[0].slice(0, 3) * pizza.qty) : (pizza.prices[1].slice(0, 3) *  pizza.qty)} грн
+              {activeSize32.includes(pizza.name) ? (+pizza.prices[0].slice(0, 3) * pizza.qty) : (+pizza.prices[1].slice(0, 3) *  pizza.qty)} грн
               </td>
             </tr>
             ))}
