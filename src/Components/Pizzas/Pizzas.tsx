@@ -321,7 +321,7 @@ export const Pizzas = () => {
                       setAfterPizzaAdded(true);
                     }}
                   >
-                    До корзини
+                    До кошику
                   </button>
                   ) : (
                     <div className="pizza__button--added">

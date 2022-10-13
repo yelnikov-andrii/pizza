@@ -235,7 +235,7 @@ export const Cart: React.FC = () => {
               className="cart__block_img"/>
           </div>
           <p className="cart__block_title">
-            Ваша корзина порожня
+            Ваш кошик порожній
           </p>
           <Link 
             to="/"

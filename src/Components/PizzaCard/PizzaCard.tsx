@@ -190,7 +190,7 @@ export const PizzaCard: React.FC <Props> = ({pizza}) => {
             setAfterPizzaAdded(true);
         }}
       >
-        До корзини
+        До кошику
       </button>
       ) : (
         <div className="pizza__button--added">
