@@ -18,6 +18,7 @@ export const GET_AMOUNT_OF_PIZZAS = 'get_amount_of_pizzas';
 export const INCREASE_AMOUNT_OF_PIZZA = 'increase_amount_of_pizza';
 export const DECREASE_AMOUNT_OF_PIZZA = 'decrease_amount_of_pizza';
 export const INCREASE_AMOUNT_OF_PIZZA_IN_CARD = 'increase_amount_of_pizza_in_card';
+export const CLEAR_PIZZAS = 'clear_pizzas';
 
 type State = {
   pizzas: Pizza[],
@@ -86,7 +87,7 @@ export const pizzasReducer = (state = defaultState, action: any) => {
         foundPizza.qty++;
       }
       return {...state, pizzasInCart: filtered}
-      case INCREASE_AMOUNT_OF_PIZZA_IN_CARD:
+    case INCREASE_AMOUNT_OF_PIZZA_IN_CARD:
       const filteredInCard = JSON.parse( JSON.stringify([...state.pizzasInCart]));
       const foundPizzaInCard = filteredInCard.find((pizza: Pizza) => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
 
@@ -94,7 +95,7 @@ export const pizzasReducer = (state = defaultState, action: any) => {
         foundPizzaInCard.qty += action.payload.qty;
       }
       return {...state, pizzasInCart: filteredInCard}
-      case DECREASE_AMOUNT_OF_PIZZA:
+    case DECREASE_AMOUNT_OF_PIZZA:
       const filteredPizzas = JSON.parse( JSON.stringify([...state.pizzasInCart]));
       const thePizza = filteredPizzas.find((pizza: Pizza) => pizza.name === action.payload.name && pizza.sizes[0] === action.payload.sizes[0] && pizza.souses[0] === action.payload.souses[0]);
 
@@ -102,6 +103,8 @@ export const pizzasReducer = (state = defaultState, action: any) => {
         thePizza.qty--;
       }
       return {...state, pizzasInCart: filteredPizzas}
+    case CLEAR_PIZZAS:
+      return {...state, pizzasInCart: []}
     default:
       return state;
   }

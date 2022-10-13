@@ -324,7 +324,7 @@ export const Pizzas = () => {
                     До корзини
                   </button>
                   ) : (
-                    <div className="pizza__button pizza__button--added">
+                    <div className="pizza__button--added">
                       Піца успішно додана до кошику
                     </div>
                   )

@@ -184,12 +184,16 @@ export const PizzaCard: React.FC <Props> = ({pizza}) => {
               dispatch({type: INCREASE_AMOUNT_OF_PIZZA_IN_CARD, payload: pizzaCopy});
               dispatch({type: GET_AMOUNT_OF_PIZZAS});
             }
+            setTimeout(() => {
+              setAfterPizzaAdded(false);
+            }, 2000);
+            setAfterPizzaAdded(true);
         }}
       >
         До корзини
       </button>
       ) : (
-        <div className="pizza__button pizza__button--added">
+        <div className="pizza__button--added">
           Піца успішно додана до кошику
         </div>
       )}

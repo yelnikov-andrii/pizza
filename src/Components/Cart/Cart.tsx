@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { DECREASE_AMOUNT_OF_PIZZA, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
+import { CLEAR_PIZZAS, DECREASE_AMOUNT_OF_PIZZA, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
 import { RootState } from "../../app/store";
 import { Pizza } from "../../types/type";
 
@@ -11,6 +11,7 @@ export const Cart: React.FC = () => {
   const [deliver, setDeliver] = useState('deliverOnCity');
   const [howToPay, setHowToPay] = useState('Оплата готівкою');
   const [deliverLocation, setDeliverLocation] = useState('heroesOfKharkiv');
+  const [formFilled, setFormFilled] = useState(false);
   const dispatch = useDispatch();
   let arrOfSums;
   let sumOfOrders;
@@ -27,7 +28,8 @@ export const Cart: React.FC = () => {
 
   return (
     <main className="cart">
-      <div className="container">
+      {formFilled === false ? (
+        <div className="container">
         {pizzas.length !== 0 ? (
           <>
           <h1 className="cart__title">
@@ -113,7 +115,12 @@ export const Cart: React.FC = () => {
         <p className="cart__price">
           Сума до оплати: {sumOfOrders} грн
         </p>
-        <form className="cart__form">
+        <form className="cart__form" onSubmit={() => {
+          setFormFilled(true);
+          console.log(howToPay, deliverLocation);
+          dispatch({type: CLEAR_PIZZAS});
+          dispatch({type: GET_AMOUNT_OF_PIZZAS});
+        }}>
           <label 
             className="cart__form_label"
             htmlFor="name"
@@ -123,6 +130,7 @@ export const Cart: React.FC = () => {
           <input 
             type="text" 
             className="cart__form_input"
+            required
             id="name"
           />
           <label 
@@ -134,10 +142,12 @@ export const Cart: React.FC = () => {
           <input 
             type="text" 
             className="cart__form_input"
+            required
             id="phone"
           />
           <select 
             className="cart__form_select"
+            required
             onChange={(event) => {
               setDeliver(event.target.value)
             }}
@@ -157,12 +167,14 @@ export const Cart: React.FC = () => {
             <textarea 
             className="cart__form_textarea"
             placeholder="Ваша адреса"
+            required
           >
           </textarea>
           )}
           {deliver === 'deliverBySelf' && (
             <select 
               className="cart__form_select"
+              required
               onChange={(event) => {
                 setDeliverLocation(event.target.value)
               }}
@@ -181,6 +193,7 @@ export const Cart: React.FC = () => {
           )}
           <select
             className="cart__form_select"
+            required
             onChange={(event) => {
               setHowToPay(event.target.value)
             }}
@@ -234,6 +247,18 @@ export const Cart: React.FC = () => {
           </>
         )}
       </div>
+      ) : (
+        <div className="container">
+          <h1 className="cart__title">
+            Дякуємо за замовлення
+          </h1>
+        <div className="cart__block">
+          <p className="cart__block_title">
+            Ваше замовлення оформлене. Ми з вами з'єднаємось за декілька хвилин
+          </p>
+        </div>
+      </div>
+      )}
     </main>
   )
 }
