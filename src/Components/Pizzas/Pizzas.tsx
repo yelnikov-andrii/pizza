@@ -24,6 +24,7 @@ export const Pizzas = () => {
   const arrTypes = ['Усі', 'Сирні', 'М\'ясні', 'Овочеві', 'Фірмові', 'Морські'];
   const dispatch = useDispatch();
   const pizzasInCart = useSelector((state: RootState) => state.pizzas.pizzasInCart);
+  const [afterPizzaAdded, setAfterPizzaAdded] = useState(false);
 
   useEffect(() => {
     getData()
@@ -303,7 +304,8 @@ export const Pizzas = () => {
                     {activeSize32.includes(pizza.name) ? pizza.prices[0] : pizza.prices[1]}
                   </p>
                   {hoverPizza === pizza.name && (
-                  <button 
+                  afterPizzaAdded === false ? (
+                    <button 
                     className="pizza__button"
                     onClick={() => {
                       const foundPizza = pizzasInCart.find((pizzaInCart: Pizza) => pizzaInCart.name === pizza.name && pizzaInCart.sizes[0] === pizza.sizes[0] && pizzaInCart.souses[0] === pizza.souses[0]);
@@ -313,10 +315,19 @@ export const Pizzas = () => {
                         dispatch({type: INCREASE_AMOUNT_OF_PIZZA, payload: pizza});
                         dispatch({type: GET_AMOUNT_OF_PIZZAS});
                       }
+                      setTimeout(() => {
+                        setAfterPizzaAdded(false);
+                      }, 2000);
+                      setAfterPizzaAdded(true);
                     }}
                   >
                     До корзини
                   </button>
+                  ) : (
+                    <div className="pizza__button pizza__button--added">
+                      Піца успішно додана до кошику
+                    </div>
+                  )
                   )}
                 </div>
               ))}

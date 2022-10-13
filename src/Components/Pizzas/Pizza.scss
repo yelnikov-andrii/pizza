@@ -171,6 +171,14 @@
     border-radius: 4px;
     font-weight: 600;
 
+    &--added {
+      height: 50px;
+      width: 250px;
+      padding: 5px;
+      color: $txt_color3;
+      background-color: $bg_color2;
+    }
+
     &:hover {
       background-color: $button_hover;
       cursor: pointer;

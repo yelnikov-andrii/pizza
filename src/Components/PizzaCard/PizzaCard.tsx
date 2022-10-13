@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import {Pizza} from '../../types/type';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import {REMOVE_TOMATO_SOUS, ADD_BUTTER_SOUS, REMOVE_BUTTER_SOUS, ADD_TOMATO_SOUS, ADD_SIZES32, ADD_SIZES42, REMOVE_SIZES32, REMOVE_SIZES42, ADD_PIZZA_TO_CART, GET_AMOUNT_OF_PIZZAS} from '../../app/reducer';
+import {REMOVE_TOMATO_SOUS, ADD_BUTTER_SOUS, REMOVE_BUTTER_SOUS, ADD_TOMATO_SOUS, ADD_SIZES32, ADD_SIZES42, REMOVE_SIZES32, REMOVE_SIZES42, ADD_PIZZA_TO_CART, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA_IN_CARD} from '../../app/reducer';
 
 type Props = {
   pizza: Pizza;
@@ -16,6 +16,8 @@ export const PizzaCard: React.FC <Props> = ({pizza}) => {
   const activeButterSous = useSelector((state: RootState) => state.pizzas.butterSouses);
   const activeTomatoSous = useSelector((state: RootState) => state.pizzas.tomatoSouses);
   const [amountOfPizzas, setAmountOfPizzas] = useState('1');
+  const [afterPizzaAdded, setAfterPizzaAdded] = useState(false);
+  const pizzasInCart = useSelector((state: RootState) => state.pizzas.pizzasInCart);
 
 
   const selectSize32 = (name: string) => {
@@ -169,14 +171,28 @@ export const PizzaCard: React.FC <Props> = ({pizza}) => {
           +
         </button>
       </div>
-      <button 
+      {afterPizzaAdded === false ? (
+        <button 
         className="pizzaCard__button pizza__button" 
         onClick={() => {
-          addPizzaToCart({...pizza});
+          const foundPizza = pizzasInCart.find((pizzaInCart: Pizza) => pizzaInCart.name === pizza.name && pizzaInCart.sizes[0] === pizza.sizes[0] && pizzaInCart.souses[0] === pizza.souses[0]);
+            if (foundPizza === undefined) {
+              addPizzaToCart({...pizza});
+            } else {
+              const pizzaCopy = {...pizza};
+              pizzaCopy.qty = +amountOfPizzas;
+              dispatch({type: INCREASE_AMOUNT_OF_PIZZA_IN_CARD, payload: pizzaCopy});
+              dispatch({type: GET_AMOUNT_OF_PIZZAS});
+            }
         }}
       >
         До корзини
       </button>
+      ) : (
+        <div className="pizza__button pizza__button--added">
+          Піца успішно додана до кошику
+        </div>
+      )}
       </div>
       </div>
       </div>
