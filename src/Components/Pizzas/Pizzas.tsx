@@ -17,8 +17,7 @@ export const Pizzas = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getData()
-      .then(result => {
+    const result = getData();
         if (selectedType === 'Усі') {
           dispatch({type: GET_PIZZAS, payload: result});
         } else {
@@ -44,7 +43,7 @@ export const Pizzas = () => {
           return '';
         });
         dispatch({type: GET_TOMATO_SOUSES, payload: namesOfTomatoSous});
-      });
+
   }, [selectedType]);
 
   return (

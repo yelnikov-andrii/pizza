@@ -8,6 +8,18 @@ export type Pizza = {
   souses: string[];
   type: string[];
   weight: string[];
+};
+
+export type PizzaInCart = {
+  name: string;
+  components: string;
+  dough: string[];
+  img: string;
+  prices: string[];
+  sizes: string[];
+  souses: string[];
+  type: string[];
+  weight: string[];
   qty: number;
 };
 

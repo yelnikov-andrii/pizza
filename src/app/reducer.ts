@@ -21,12 +21,12 @@ export const INCREASE_AMOUNT_OF_PIZZA_IN_CARD = 'increase_amount_of_pizza_in_car
 export const CLEAR_PIZZAS = 'clear_pizzas';
 
 type State = {
-  pizzas: Pizza[],
+  pizzas: any[],
   activeSizes32: string[],
   activeSizes42: string[],
   butterSouses: string[],
   tomatoSouses: string[],
-  pizzasInCart: Pizza[],
+  pizzasInCart: any[],
   amountOfPizzasInCart: number;
 }
 

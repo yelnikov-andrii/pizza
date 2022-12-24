@@ -1,10 +1,9 @@
 import React from "react";
 import { DECREASE_AMOUNT_OF_PIZZA, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
-import { Pizza } from "../../types/type";
 import { useDispatch } from "react-redux";
 
 type Props = {
-  pizza: Pizza;
+  pizza: any;
 }
 
 export const CartAmountBlock: React.FC <Props> = ({pizza}) => {

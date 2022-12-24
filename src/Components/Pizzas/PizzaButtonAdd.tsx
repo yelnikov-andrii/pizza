@@ -3,7 +3,6 @@ import { Pizza } from "../../types/type";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { ADD_PIZZA_TO_CART, GET_AMOUNT_OF_PIZZAS, INCREASE_AMOUNT_OF_PIZZA } from "../../app/reducer";
-import { Pizza as PizzaType } from "../../types/type";
 
 
 type Props = {
@@ -15,7 +14,7 @@ export const PizzaButtonAdd: React.FC <Props> = ({pizza, setAfterPizzaAdded}) =>
   const dispatch = useDispatch();
   const pizzasInCart = useSelector((state: RootState) => state.pizzas.pizzasInCart);
 
-  const addPizzaToCart = (pizza: PizzaType) => {
+  const addPizzaToCart = (pizza: any) => {
     pizza.qty = 1;
     dispatch({type: ADD_PIZZA_TO_CART, payload: pizza});
     dispatch({type: GET_AMOUNT_OF_PIZZAS});
